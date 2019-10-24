@@ -11,11 +11,8 @@ from django.utils import timezone
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
-
-
-# Create your models here.
-
-
+	
+	
 class Discussion(models.Model):
     Discussion_Type = (
         ('article','Article'),
@@ -23,7 +20,6 @@ class Discussion(models.Model):
         ('post','Post'),
         ('blog','Blog'),
     )
-    #creater_id = models.ForeignKey(User,related_name='Dis_Creater',default=1)
     title = models.CharField("Title",max_length=100)
     text = models.TextField("Text")
     discussion_type = models.CharField("Type",max_length=10,choices=Discussion_Type)
